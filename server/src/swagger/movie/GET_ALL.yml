@@ -1,17 +1,16 @@
-Return all the movies 
+Return a movie key information based on its title
 ---
 tags:
   - movie
-parameters:
 responses:
   200:
-    description: The movies were successfully retrieved
+    description: The movie's information were successfully retrieved
     schema:
       example:
-      
-        movie:
-          title: Star Wars
-          producer: George Lucas
-          date: 1977
-          actor1: Mark Hamill
-          actor2: Carrie Fisher
+        array:
+          movie:
+            title: Star Wars
+            producer: George Lucas
+            date: 1977
+            actor1: Mark Hamill
+            actor2: Carrie Fisher

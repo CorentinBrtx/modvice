@@ -49,3 +49,13 @@ class MovieResource(Resource):
         repository = MovieRepository()
         movie = repository.update(title=title, producer=producer, date=date, actor1=actor1, actor2=actor2)
         return jsonify({"movie": movie.json})
+
+class MoviesResource(Resource):
+    """ Verbs relative to movies """
+
+    @staticmethod
+    @swag_from("../swagger/movie/GET_ALL.yml")
+    def get():
+        """ Return all the movies """
+        movies = MovieRepository.get_all()
+        return jsonify({"movies": [movie.json for movie in movies]})

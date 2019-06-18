@@ -14,7 +14,7 @@ class MovieRepository:
     @staticmethod
     def get_all():
         """ Query all the movies """
-        return Movie.query.filter_by()
+        return Movie.query.all()
 
     def update(self, title, producer, date, actor1, actor2):
         """ Update a movie's age """
