@@ -1,0 +1,37 @@
+Update a movie based on the sent information
+---
+tags:
+  - movie
+parameters:
+  - name: title
+    in: path
+    type: string
+    description: the title of the movie
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        producer:
+          type: string
+          description: the producer of the movie
+        date:
+          type: integer
+          description: the date of the movie
+        actor1:
+          type: string
+          description: the main actor of the movie
+        actor2:
+          type: string
+          description: the secondary actor of the movie
+responses:
+  200:
+    description: The movie was successfully created
+    schema:
+      example:
+        movie:
+          title: Star Wars
+          producer: George Lucas
+          date: 1977
+          actor1: Mark Hamill
+          actor2: Carrie Fisher
