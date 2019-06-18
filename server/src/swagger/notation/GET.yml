@@ -3,14 +3,10 @@ Return a notation key information based on the user and the movie
 tags:
   - notation
 parameters:
-  - name: user_lastname
+  - name: username
     in: path
     type: string
-    description: the last name of the user
-  - name: user_firstname
-    in: path
-    type: string
-    description: the first name of the user
+    description: the name of the user
   - name: movie_title
     in: path
     type: string
@@ -21,7 +17,6 @@ responses:
     schema:
       example:
         notation:
-          user_lastname: Doe
-          user_firstname: John
+          username: John
           movie_title: Jurassic Park
           value: 5

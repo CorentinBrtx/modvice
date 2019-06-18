@@ -7,27 +7,27 @@ class NotationRepository:
     """ The repository for the notation model """
 
     @staticmethod
-    def get(last_name, first_name,title):
+    def get(username, movie_title):
         """ Query a notation of an user on a film """
-        return Notation.query.filter_by(last_name=last_name, first_name=first_name,title=title).one()
+        return Notation.query.filter_by(username=username,movie_title=movie_title).one()
 
-    def update(self, last_name, first_name, title, notation):
+    def update(self, username, movie_title, value):
         """ Update a user's notation of a film """
-        note = self.get(last_name, first_name,title)
-        note.notation = notation
+        notation = self.get(username, movie_title)
+        notation.value = value
 
-        return note.save()
+        return notation.save()
 
     @staticmethod
-    def create(last_name, first_name, title, notation):
+    def create(username, movie_title, value):
         """ Create a new notation of a film by an user """
-        note = Notation(last_name=last_name, first_name=first_name, title=title, notation=notation)
+        notation = Notation(username=username,movie_title=movie_title, value=value)
 
-        return note.save()
+        return notation.save()
 
     @staticmethod
-    def delete(last_name, first_name, title, notation):
+    def delete(self, username, movie_title):
         """ Delete a notation of a film by an user"""
-        note=self.get(last_name, first_name, title).delete
+        notation = self.get(username, movie_title)
 
-        return note.save()
+        return notation.save()

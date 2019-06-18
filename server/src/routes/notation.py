@@ -8,5 +8,5 @@ from resources import NotationResource
 
 NOTATION_BLUEPRINT = Blueprint("notation", __name__)
 Api(NOTATION_BLUEPRINT).add_resource(
-    NotationResource, "/Notation/<string:movie_title>/<string:user_lastname>/<string:user_firstname>"
+    NotationResource, "/Notation/<string:movie_title>/<string:username>"
 )

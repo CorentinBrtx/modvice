@@ -9,14 +9,12 @@ class User(db.Model, BaseModel, metaclass=MetaBaseModel):
 
     __tablename__ = "user"
     
-    first_name = db.Column(db.String(300), primary_key=True)
-    last_name = db.Column(db.String(300), primary_key=True)
+    user_name = db.Column(db.String(300), primary_key=True)
     age = db.Column(db.Integer, nullable=True)
 
-    notations = db.relationship("Notation", back_populates="user")
+    notation = db.relationship("Notation", back_populates="user")
 
-    def __init__(self, first_name, last_name, age=None):
+    def __init__(self, user_name, age=None):
         """ Create a new User """
-        self.first_name = first_name
-        self.last_name = last_name
+        self.user_name = user_name
         self.age = age
