@@ -15,7 +15,7 @@ class MovieResource(Resource):
     """ Verbs relative to the movies """
 
     @staticmethod
-    @swag_from("../swagger/user/GET.yml")
+    @swag_from("../swagger/movie/GET.yml")
     def get(title):
         """ Return a movie key information based on his title """
         movie = MovieRepository.get(title=title)

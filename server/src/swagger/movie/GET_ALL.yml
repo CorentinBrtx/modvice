@@ -1,0 +1,17 @@
+Return all the movies 
+---
+tags:
+  - movie
+parameters:
+responses:
+  200:
+    description: The movies were successfully retrieved
+    schema:
+      example:
+      
+        movie:
+          title: Star Wars
+          producer: George Lucas
+          date: 1977
+          actor1: Mark Hamill
+          actor2: Carrie Fisher
