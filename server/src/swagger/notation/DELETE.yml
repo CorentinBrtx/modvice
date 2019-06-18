@@ -1,0 +1,30 @@
+Create a notation based on the sent information
+---
+tags:
+  - notation
+parameters:
+  - name: user_lastname
+    in: path
+    type: string
+    description: the last name of the user
+  - name: user_firstname
+    in: path
+    type: string
+    description: the first name of the user
+  - name: movie_title
+    in: path
+    type: string
+    description: the title of the movie
+  - name: body
+    in: body
+
+responses:
+  200:
+    description: The notation was successfully deleted
+    schema:
+      example:
+        notation:
+          user_lastname: Doe
+          user_firstname: John
+          movie_title: Jurassic Park
+          value: 5
