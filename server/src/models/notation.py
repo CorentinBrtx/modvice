@@ -3,8 +3,6 @@ Define the Notation model
 """
 from . import db
 from .abc import BaseModel, MetaBaseModel
-from .movie import Movie
-from .user import User
 
 
 class Notation(db.Model, BaseModel, metaclass=MetaBaseModel):

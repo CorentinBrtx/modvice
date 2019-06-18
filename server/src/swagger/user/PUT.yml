@@ -21,7 +21,7 @@ parameters:
           description: The age of the user
 responses:
   200:
-    description: The user was successfully created
+    description: The user was successfully updated
     schema:
       example:
         user:

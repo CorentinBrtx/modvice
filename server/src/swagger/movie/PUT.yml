@@ -26,7 +26,7 @@ parameters:
           description: the secondary actor of the movie
 responses:
   200:
-    description: The movie was successfully created
+    description: The movie was successfully updated
     schema:
       example:
         movie:
