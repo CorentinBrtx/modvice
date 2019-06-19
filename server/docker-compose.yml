@@ -15,8 +15,6 @@ services:
     environment:
       FLASK_APP: src/server.py
       FLASK_DEBUG: 1
-	logs
-	hot reloading
     command: vendor/bin/flask run --host=0.0.0.0
 
 
