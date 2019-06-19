@@ -5,15 +5,22 @@ import { homedir } from 'os';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from './components/search/Search.js'
 
+import Home from './components/home/Home.js'
+import Connect from './components/connect/Connect.js'
+import Users from './components/users/Users.js'
+
+
 function App() {
   return (
     <Router>
-      <div>
-      <Route exact path="/" component={Search} />
-    </div>
-  </Router>
+      <Route path='/home' component={Home} />
+      <Route path="/connect" component={Connect} />
+      <Route path='/user' component={Users} />
+      <Route path="/" component={Search} />
+    </Router>
   );
 }
 
 
 export default App;
+

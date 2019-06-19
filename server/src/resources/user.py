@@ -16,30 +16,41 @@ class UserResource(Resource):
 
     @staticmethod
     @swag_from("../swagger/user/GET.yml")
-    def get(last_name, first_name):
+    def get(user_name):
         """ Return an user key information based on his name """
-        user = UserRepository.get(last_name=last_name, first_name=first_name)
-        return jsonify({"user": user.json})
+        user = UserRepository.get(user_name= user_name)
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
 
     @staticmethod
     @parse_params(
         Argument("age", location="json", required=True, help="The age of the user.")
     )
     @swag_from("../swagger/user/POST.yml")
-    def post(last_name, first_name, age):
+    def post(user_name, age):
         """ Create an user based on the sent information """
         user = UserRepository.create(
-            last_name=last_name, first_name=first_name, age=age
+            user_name= user_name, age=age
         )
-        return jsonify({"user": user.json})
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
 
     @staticmethod
     @parse_params(
         Argument("age", location="json", required=True, help="The age of the user.")
     )
     @swag_from("../swagger/user/PUT.yml")
-    def put(last_name, first_name, age):
+    def put(user_name, age):
         """ Update an user based on the sent information """
         repository = UserRepository()
-        user = repository.update(last_name=last_name, first_name=first_name, age=age)
-        return jsonify({"user": user.json})
+        user = repository.update(user_name= user_name, age=age)
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
+
+
+class UsersResource(Resource):
+    """ Verbs relative to users """
+
+    @staticmethod
+    @swag_from("../swagger/user/GET_ALL.yml")
+    def get():
+        """ Return all the users """
+        users = UserRepository.get_all()
+        return jsonify({"users": [{"user_name": user.user_name, "age": user.age} for user in users]})

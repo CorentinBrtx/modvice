@@ -1,4 +1,4 @@
-Return a notation key information based on the user and the movie
+Delete a notation based on the user and the movie
 ---
 tags:
   - notation
@@ -13,7 +13,7 @@ parameters:
     description: the title of the movie
 responses:
   200:
-    description: The notation's information were successfully retrieved
+    description: The notation was successfully deleted
     schema:
       example:
         notation:

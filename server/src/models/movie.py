@@ -16,7 +16,7 @@ class Movie(db.Model, BaseModel, metaclass=MetaBaseModel):
     actor1 = db.Column(db.String(300), nullable=True)
     actor2 = db.Column(db.String(300), nullable=True)
 
-    notations = db.relationship("Notation", back_populates="movie")
+    notation = db.relationship("Notation", back_populates="movie")
 
 
     def __init__(self, title, producer=None, date=None, actor1=None, actor2=None):

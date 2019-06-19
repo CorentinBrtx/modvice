@@ -1,4 +1,4 @@
-Return a notation key information based on the user and the movie
+Return the notations of a user 
 ---
 tags:
   - notation
@@ -7,10 +7,6 @@ parameters:
     in: path
     type: string
     description: the name of the user
-  - name: movie_title
-    in: path
-    type: string
-    description: the title of the movie
 responses:
   200:
     description: The notation's information were successfully retrieved

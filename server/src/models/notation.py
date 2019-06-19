@@ -10,21 +10,17 @@ class Notation(db.Model, BaseModel, metaclass=MetaBaseModel):
 
     __tablename__ = "notation"
 
-    id = db.Column(db.Integer, primary_key=True)
     value = db.Column(db.Integer, primary_key=False)
 
-    movie_title = db.Column(db.Integer, db.ForeignKey('movie.title'))
-    movie = db.relationship("Movie", back_populates="notation")
+    movie_title = db.Column(db.String(300), db.ForeignKey('movie.title'), primary_key=True)
+    movie = db.relationship("Movie", back_populates="notation", foreign_keys=[movie_title])
 
-    user_firstname = db.Column(db.Integer, db.ForeignKey('user.firstname'))
-    user_lastname = db.Column(db.Integer, db.ForeignKey('user.lastname'))
-    user = db.relationship("User", back_populates="notation")
+    username = db.Column(db.String(300), db.ForeignKey('user.user_name'), primary_key=True)
+    user = db.relationship("User", back_populates="notation", foreign_keys=[username])
     
 
-    def __init__(self, id, value, movie_title, user_firstname, user_lastname):
-        """ Create a new User """
-        self.id = id
+    def __init__(self, value, movie_title, username):
+        """ Create a new Notation """
         self.value = value
-        self.user_firstname = user_firstname
-        self.user_lastname = user_lastname
+        self.username = username
         self.movie_title = movie_title
