@@ -11,6 +11,11 @@ class UserRepository:
         """ Query a user by last and  user name """
         return User.query.filter_by(user_name= user_name).one()
 
+    @staticmethod
+    def get_all():
+        """ Query all the users """
+        return User.query.all()
+
     def update(self, user_name, age):
         """ Update a user's age """
         user = self.get(user_name)

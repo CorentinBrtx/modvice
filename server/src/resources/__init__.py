@@ -1,3 +1,3 @@
-from .user import UserResource
+from .user import UserResource, UsersResource
 from .movie import MovieResource, MoviesResource
-from .notation import NotationResource
+from .notation import NotationResource, NotationsMovieResource, NotationsUserResource

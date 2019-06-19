@@ -1,19 +1,15 @@
-Delete a notation based on the user and the movie
+Return the notations on a movie
 ---
 tags:
   - notation
 parameters:
-  - name: username
-    in: path
-    type: string
-    description: the name of the user
   - name: movie_title
     in: path
     type: string
     description: the title of the movie
 responses:
   200:
-    description: The notation was successfully deleted
+    description: The notation's information were successfully retrieved
     schema:
       example:
         notation:

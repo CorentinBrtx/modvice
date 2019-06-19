@@ -19,7 +19,7 @@ class UserResource(Resource):
     def get(user_name):
         """ Return an user key information based on his name """
         user = UserRepository.get(user_name= user_name)
-        return jsonify({"user": user.json})
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
 
     @staticmethod
     @parse_params(
@@ -31,7 +31,7 @@ class UserResource(Resource):
         user = UserRepository.create(
             user_name= user_name, age=age
         )
-        return jsonify({"user": user.json})
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
 
     @staticmethod
     @parse_params(
@@ -42,4 +42,15 @@ class UserResource(Resource):
         """ Update an user based on the sent information """
         repository = UserRepository()
         user = repository.update(user_name= user_name, age=age)
-        return jsonify({"user": user.json})
+        return jsonify({"user": {"user_name": user.user_name, "age": user.age}})
+
+
+class UsersResource(Resource):
+    """ Verbs relative to users """
+
+    @staticmethod
+    @swag_from("../swagger/user/GET_ALL.yml")
+    def get():
+        """ Return all the users """
+        users = UserRepository.get_all()
+        return jsonify({"users": [{"user_name": user.user_name, "age": user.age} for user in users]})

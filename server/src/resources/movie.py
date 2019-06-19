@@ -19,7 +19,13 @@ class MovieResource(Resource):
     def get(title):
         """ Return a movie key information based on his title """
         movie = MovieRepository.get(title=title)
-        return jsonify({"movie": movie.json})
+        return jsonify({"movie": {
+                            "actor1": movie.actor1,
+                            "actor2": movie.actor2,
+                            "date": movie.date,
+                            "producer": movie.producer,
+                            "title": movie.title
+                        }})
 
     @staticmethod
     @parse_params(
@@ -34,7 +40,13 @@ class MovieResource(Resource):
         movie = MovieRepository.create(
             title=title, producer=producer, date=date, actor1=actor1, actor2=actor2
         )
-        return jsonify({"movie": movie.json})
+        return jsonify({"movie": {
+                            "actor1": movie.actor1,
+                            "actor2": movie.actor2,
+                            "date": movie.date,
+                            "producer": movie.producer,
+                            "title": movie.title
+                        }})
 
     @staticmethod
     @parse_params(
@@ -48,7 +60,13 @@ class MovieResource(Resource):
         """ Update an movie based on the sent information """
         repository = MovieRepository()
         movie = repository.update(title=title, producer=producer, date=date, actor1=actor1, actor2=actor2)
-        return jsonify({"movie": movie.json})
+        return jsonify({"movie": {
+                            "actor1": movie.actor1,
+                            "actor2": movie.actor2,
+                            "date": movie.date,
+                            "producer": movie.producer,
+                            "title": movie.title
+                        }})
 
 class MoviesResource(Resource):
     """ Verbs relative to movies """
@@ -58,4 +76,11 @@ class MoviesResource(Resource):
     def get():
         """ Return all the movies """
         movies = MovieRepository.get_all()
-        return jsonify({"movies": [movie.json for movie in movies]})
+        return jsonify({"movies": [{"movie": {
+                                        "actor1": movie.actor1,
+                                        "actor2": movie.actor2,
+                                        "date": movie.date,
+                                        "producer": movie.producer,
+                                        "title": movie.title
+                                    }} 
+                                    for movie in movies]})

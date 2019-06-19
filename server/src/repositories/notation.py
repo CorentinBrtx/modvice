@@ -8,11 +8,21 @@ class NotationRepository:
 
     @staticmethod
     def get(username, movie_title):
-        """ Query a notation of an user on a film """
+        """ Query a notation of a user on a movie """
         return Notation.query.filter_by(username=username,movie_title=movie_title).one()
 
+    @staticmethod
+    def get_all_movie(movie_title):
+        """ Query all the notations on a movie """
+        return Notation.query.filter_by(movie_title=movie_title).all()
+
+    @staticmethod
+    def get_all_user(username):
+        """ Query all the notations of a user """
+        return Notation.query.filter_by(username=username).all()
+
     def update(self, username, movie_title, value):
-        """ Update a user's notation of a film """
+        """ Update a user's notation of a movie """
         notation = self.get(username, movie_title)
         notation.value = value
 
@@ -20,14 +30,12 @@ class NotationRepository:
 
     @staticmethod
     def create(username, movie_title, value):
-        """ Create a new notation of a film by an user """
+        """ Create a new notation of a movie by a user """
         notation = Notation(username=username,movie_title=movie_title, value=value)
 
         return notation.save()
 
     @staticmethod
-    def delete(self, username, movie_title):
-        """ Delete a notation of a film by an user"""
-        notation = self.get(username, movie_title)
-
-        return notation.save()
+    def delete(username, movie_title):
+        """ Delete a notation of a movie by a user"""
+        return Notation.query.filter_by(username=username,movie_title=movie_title).one().delete()
