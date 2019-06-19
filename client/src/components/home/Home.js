@@ -1,13 +1,13 @@
-import React from 'react';
-import './Home.css'
+import React from './node_modules/react';
+import './home.css'
 
 
 
-function Home () {
+function home () {
  return(
  <div className="user">
 
-   <div className="user1">   
+<div className="user1">   
                 <h1>Home</h1>
         </div>
 
@@ -32,16 +32,10 @@ function Home () {
             <h2>Populaires</h2>
         </div>    
 
-          <div className="user5">
+        <div className="user5">
             <h4>coucou</h4>                                 
             <h4>corentin is big </h4>
-          </div>        
-   </div>
-  </div> 
+   </div>        
+  </div>
  </div>
-
-
- )
-}
-
-export default Home;
+      
