@@ -73,6 +73,9 @@ function Home ({match}) {
                     </div>        
             </div>
         </div>
+
+        <Link to={"/newmovie/"+match.params.username}>Ajouter un nouveau film</Link>
+        
     </div>
   )};
 

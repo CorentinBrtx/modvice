@@ -7,15 +7,17 @@ import Home from './components/home/Home.js'
 import Connect from './components/connect/Connect.js'
 import Users from './components/users/Users.js'
 import Movie from './components/movie/Movie.js'
+import NewMovie from './components/new_movie/NewMovie.js'
 
 
 function App() {
   return (
     <Router>
       <Route path='/home/:username' component={Home} />
-      <Route path="/connect" component={Connect} />
+      <Route path='/connect' component={Connect} />
       <Route path='/user/:username' component={Users} />
       <Route path='/movie/:username/:movie_title' component={Movie} />
+      <Route path='/newmovie/:username' component={NewMovie} />
     </Router>
   );
 }

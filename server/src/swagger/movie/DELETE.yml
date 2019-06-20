@@ -1,0 +1,16 @@
+Delete a movie
+---
+tags:
+  - movie
+parameters:
+  - name: title
+    in: path
+    type: string
+    description: the title of the movie
+responses:
+  200:
+    description: The movie was successfully deleted
+    schema:
+      example:
+        movie:
+          title: Jurassic Park

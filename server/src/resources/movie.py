@@ -68,6 +68,13 @@ class MovieResource(Resource):
                             "title": movie.title
                         }})
 
+    @staticmethod
+    @swag_from("../swagger/movie/DELETE.yml")
+    def delete(title):
+        """ Delete a movie """
+        MovieRepository.delete(title=title)
+        return jsonify({"movie": {"title": title}})
+
 class MoviesResource(Resource):
     """ Verbs relative to movies """
 

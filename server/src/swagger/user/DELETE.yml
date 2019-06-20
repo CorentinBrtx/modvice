@@ -1,0 +1,16 @@
+Delete a user
+---
+tags:
+  - user
+parameters:
+  - name: username
+    in: path
+    type: string
+    description: the name of the user
+responses:
+  200:
+    description: The user was successfully deleted
+    schema:
+      example:
+        user:
+          username: John

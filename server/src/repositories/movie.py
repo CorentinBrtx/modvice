@@ -32,3 +32,8 @@ class MovieRepository:
         movie = Movie(title=title, producer=producer, date=date, actor1=actor1, actor2=actor2)
 
         return movie.save()
+
+    @staticmethod
+    def delete(title):
+        """ Delete a movie """
+        return Movie.query.filter_by(title=title).one().delete()

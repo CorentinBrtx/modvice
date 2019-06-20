@@ -14,8 +14,7 @@ function Connect(props) {
         .post("http://localhost:5000/application/authenticate")
         .send({username: username, password: password})
         .then(response => props.history.push("/home/"+username))
-        .catch(error => {alert("Nom d'utilisateur ou mot de passe incorrect");
-                props.history.push("/connect")})
+        .catch(error => alert("Nom d'utilisateur ou mot de passe incorrect"))
     }
 
     const submitInscription = (event) => {
@@ -32,8 +31,7 @@ function Connect(props) {
             .post("http://localhost:5000/application/user/"+username)
             .send({age: age, password: password})
             .then(response => props.history.push("/home/"+username))
-            .catch(error => {alert("Ce nom d'utilisateur est déjà utilisé");
-                    props.history.push("/connect")})
+            .catch(error => alert("Ce nom d'utilisateur est déjà utilisé"))
         }
     }
 

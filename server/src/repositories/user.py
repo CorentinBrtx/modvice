@@ -30,3 +30,8 @@ class UserRepository:
         user = User(username= username, age=age, password=password)
 
         return user.save()
+
+    @staticmethod
+    def delete(username):
+        """ Delete a user """
+        return User.query.filter_by(username=username).one().delete()
