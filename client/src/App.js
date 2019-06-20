@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { homedir } from 'os';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Search from './components/search/Search.js'
 
 import Home from './components/home/Home.js'
 import Connect from './components/connect/Connect.js'
@@ -16,8 +15,7 @@ function App() {
       <Route path='/home/:username' component={Home} />
       <Route path="/connect" component={Connect} />
       <Route path='/user/:username' component={Users} />
-      <Route path='/movie/:username/:movie_title/:username' component={Movie} />
-      <Route path="/search" component={Search} />
+      <Route path='/movie/:username/:movie_title' component={Movie} />
     </Router>
   );
 }

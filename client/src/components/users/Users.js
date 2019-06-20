@@ -1,16 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './Users.css';
 
 
 
-function Users () {
+function Users ({match}) {
     return(
         <div className="user">
+
+            <Link to={"/home/"+match.params.username}>Accueil</Link>
             <div className="title">   
                 <h1>Mon compte</h1>
             </div>
 
-            <div class="column-layout">
+            <div className="column-layout">
     
                 <div className="align">
                     <h2 className="title2">Informations utilisateur : </h2>
