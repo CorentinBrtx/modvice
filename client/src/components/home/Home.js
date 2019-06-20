@@ -48,7 +48,6 @@ function Home ({match}) {
 
 
 
-
         <div className="column-layout">
                 
 
