@@ -1,19 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import './Home.css'
-
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-
-
-    
-    
-    
-    function Home () {
-        return(
-            <div className="user">
-=======
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Select, { components } from 'react-select';
 import './Home.css'
@@ -55,40 +40,7 @@ function Home ({match}) {
             options={colourOptions}
             />
       </div>
->>>>>>> 0f9e3048de91517f60a0ec539498dc22deccef93
 
-                <div className="bouton">
-                <Link to="/user">Accéder à mon compte</Link>
-                </div>            
-
-<<<<<<< HEAD
-                <div className="title">   
-                    <h1>Modvice</h1>
-                </div>
-    
-                <div class="column-layout">
-        
-                    <div className="align">
-                        <h2>Pour moi </h2>
-    
-                        <h4>hoho</h4>
-                        <h4>miaou</h4>
-                    </div> 
-    
-                    <div className="align">
-                        <h2>Populairs</h2>
-    
-                        <h4>hihi</h4>                                 
-                        <h4>waouf</h4>
-                    </div>        
-                </div>
-
-            </div>  
-        )
-      }
-    
-    export default Home;
-=======
 
 
         <div className="column-layout">
@@ -128,5 +80,4 @@ const SelectContainer = ({ children, ...props }) => {
 };
 
 export default Home;
->>>>>>> 0f9e3048de91517f60a0ec539498dc22deccef93
       
