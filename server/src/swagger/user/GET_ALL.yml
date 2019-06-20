@@ -10,3 +10,4 @@ responses:
         user:
           user_name: John
           age: 30
+          password: abc

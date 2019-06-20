@@ -1,12 +1,7 @@
 import React from 'react';
 import './Connect.css';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Redirect,
-    withRouter
-  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import superagent from 'superagent';
 
 
 class Connect extends React.Component {
@@ -15,7 +10,19 @@ class Connect extends React.Component {
         e.preventDefault()
         var username = document.getElementById("username_co").value
         var password = document.getElementById("password_co").value
-		this.props.history.push("/home?username="+username);
+
+        const [realPassword, setRealPassword] = React.useState(null);
+        React.useEffect(() => {
+            superagent
+            .get("http://localhost:5000/application/user/"+username)
+            .then(response => setRealPassword(response.body.user.password));
+        }, []);
+
+        if (password == realPassword) {
+            this.props.history.push("/home/"+username);
+        } else {
+            alert("Mauvais mot de passe")
+        }
     }
 
     submitInscription(e) {
@@ -29,7 +36,7 @@ class Connect extends React.Component {
         if (password != password_bis) {
             alert("Entrez deux fois le même mot de passe")
         } else {
-            this.props.history.push("/home?username="+username)
+            this.props.history.push("/home/"+username)
         }
     }
     
@@ -42,10 +49,10 @@ class Connect extends React.Component {
     
                     <div className="Connexion">
                         <form onSubmit = {this.submitConnexion.bind(this)} >
-                            <label for="username_co">Nom d'utilisateur : </label>
+                            <label>Nom d'utilisateur : </label>
                             <input type="text" name="username" id="username_co" required/>
                             
-                            <label for="password_co">Mot de passe : </label>
+                            <label>Mot de passe : </label>
                             <input type="password" name="password" id="password_co"/>
 
                             <input type="submit" value="Se connecter" />
@@ -54,16 +61,16 @@ class Connect extends React.Component {
         
                     <div className="Inscription">
                         <form onSubmit = {this.submitInscription.bind(this)}>
-                            <label for="username_ins">Nom d'utilisateur : </label>
+                            <label>Nom d'utilisateur : </label>
                             <input type="text" name="username" id="username_ins" required/>
                             
-                            <label for="age">Age :</label>
+                            <label>Age :</label>
                             <input type="number" name="age" id="age" required/>
 
-                            <label for="password_ins">Mot de passe : </label>
+                            <label>Mot de passe : </label>
                             <input type="password" name="password" id="password_ins" required/>
 
-                            <label for="password_bis">Remettez votre mot de passe : </label>
+                            <label>Remettez votre mot de passe : </label>
                             <input type="password" name="password_bis" id="password_bis"/>
 
                             <input type="submit" value="S'inscrire" />

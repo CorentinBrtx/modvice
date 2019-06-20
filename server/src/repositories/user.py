@@ -8,7 +8,7 @@ class UserRepository:
 
     @staticmethod
     def get(user_name):
-        """ Query a user by last and  user name """
+        """ Query a user by user name """
         return User.query.filter_by(user_name= user_name).one()
 
     @staticmethod
@@ -24,8 +24,8 @@ class UserRepository:
         return user.save()
 
     @staticmethod
-    def create(user_name, age):
+    def create(user_name, age, password):
         """ Create a new user """
-        user = User(user_name= user_name, age=age)
+        user = User(user_name= user_name, age=age, password=password)
 
         return user.save()
