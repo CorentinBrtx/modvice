@@ -1,5 +1,6 @@
 import React from 'react';
 import './Movie.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import superagent from 'superagent';
 
 function Movie ({match}) {
@@ -32,6 +33,10 @@ function Movie ({match}) {
     console.log(mean)
     return ((movie && mean && ownNote) ?
         <div>
+
+
+            <Link to={"/home/"+match.params.username}>Accueil</Link>
+            <Link to={"/user/"+match.params.username}>Mon compte</Link>
             <h1>{movie.title}</h1>
 
             <div className="Infos">

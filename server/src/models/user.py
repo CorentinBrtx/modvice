@@ -11,10 +11,12 @@ class User(db.Model, BaseModel, metaclass=MetaBaseModel):
     
     user_name = db.Column(db.String(300), primary_key=True)
     age = db.Column(db.Integer, nullable=True)
+    password = db.Column(db.String(300))
 
     notation = db.relationship("Notation", back_populates="user")
 
-    def __init__(self, user_name, age=None):
+    def __init__(self, user_name, age=None, password=""):
         """ Create a new User """
         self.user_name = user_name
         self.age = age
+        self.password = password
