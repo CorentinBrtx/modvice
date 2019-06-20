@@ -1,6 +1,7 @@
 import React from 'react';
 import './Search.css';
 import Select, { components } from 'react-select';
+import superagent from 'superagent';
 const colourOptions = [
     { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
     { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -16,6 +17,14 @@ const colourOptions = [
 
 
 function Search() {
+  const [movies, setMovies] = React.useState(null);
+  React.useEffect(() => {
+    superagent
+      .get("http://localhost:5000/application/movies")
+      .then(response => setMovies(response.body.user));
+  }, []);
+console.log(movies)
+
     return (
       <div className="Search">
           <Select
