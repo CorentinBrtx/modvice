@@ -11,35 +11,22 @@
     border: 5px #F2F2F2 solid;
     background: #FFF;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
-    
   }
 
+.align {
+    text-align: center;
+}
 
+.bouton {
+  background-color:#282c34;
+  color: white;
+}
 
-.user1 {
-    text-align: center;
-    
-  }
-  .user2 {
-    text-align: center;
-    color: #FE0101;
-    
-  }
-  .user3 {
-    text-align: center;
-    
-    
-  }  
-  .user4 {
-    text-align: center;
-    color: #FE0101;
-  }
-.user5 {
-    text-align: center;
-    
-  }
+h2 {
+  color: red
+}
   
-  .user1 {
+  .title  {
     background-color: #282c34;
     min-height: 10vh;
     display: flex;
@@ -47,6 +34,8 @@
     align-items: center;
     justify-content: center;
     font-size: calc(20px + 2vmin);
-    color: #FE0101;
+    color: red;
   }
+  
+
   

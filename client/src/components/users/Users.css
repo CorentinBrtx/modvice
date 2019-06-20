@@ -17,6 +17,11 @@
     text-align: center;
 }
 
+.bouton {
+  background-color:#282c34;
+  color: white;
+}
+
 h2 {
   color: red
 }

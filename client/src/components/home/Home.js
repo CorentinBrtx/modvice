@@ -1,41 +1,46 @@
-import React from './node_modules/react';
-import './home.css'
+import React from 'react';
+import './Home.css'
+
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
-function home () {
- return(
- <div className="user">
+    
+    
+    
+    function Home () {
+        return(
+            <div className="user">
 
-<div className="user1">   
-                <h1>Home</h1>
-        </div>
+                <div className="bouton">
+                <Link to="/user">Accéder à mon compte</Link>
+                </div>            
 
-
-
-  <div class="column-layout">
+                <div className="title">   
+                    <h1>Modvice</h1>
+                </div>
+    
+                <div class="column-layout">
         
+                    <div className="align">
+                        <h2>Pour moi </h2>
+    
+                        <h4>hoho</h4>
+                        <h4>miaou</h4>
+                    </div> 
+    
+                    <div className="align">
+                        <h2>Populairs</h2>
+    
+                        <h4>hihi</h4>                                 
+                        <h4>waouf</h4>
+                    </div>        
+                </div>
 
-   <div>     
-        <div className="user2">
-            <h2>Pour vous : </h2>
-        </div>
-
-
-        <div className="user3">
-            <h4>hihi</h4>
-            <h4>star wars</h4>
-        </div>
-   </div> 
-   <div>
-        <div className="user4">
-            <h2>Populaires</h2>
-        </div>    
-
-        <div className="user5">
-            <h4>coucou</h4>                                 
-            <h4>corentin is big </h4>
-   </div>        
-  </div>
- </div>
+            </div>  
+        )
+      }
+    
+    export default Home;
       
