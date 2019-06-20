@@ -1,0 +1,22 @@
+.title  {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(20px + 2vmin);
+    color: red;
+     
+  }
+
+  .liens {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: inline;
+    flex-direction: column;
+
+    font-size: calc(5.1px + 2vmin);
+    color: red;
+     
+  }

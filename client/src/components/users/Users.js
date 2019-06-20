@@ -28,22 +28,30 @@ function Users ({match}) {
     return((notes && user) ?
 
         <div> 
-            <Link to={"/home/"+match.params.username}>Accueil</Link>
-            <h1>Bonjour {user.username}</h1>
-
-            <div className="Infos">
-                <ul><li>Age : {user.age}</li></ul>
-            </div>
-
-            <div>
-                <h2>vos notes : </h2>
-            </div>
-
-            <div>
-                <ul> {notes.map(note => ("<li>"+ note.movie_title+ ":" + note.value +"/10"+ "</li>"))} </ul>
+            <div className="accueil">
+                <Link to={"/home/"+match.params.username}>Accueil</Link>
             </div>
 
 
+            <div className="title">            
+                <h1>Mon espace</h1>    
+            </div>
+            
+
+
+            <div className="column-layout">               
+
+                <div className="Infos">
+                    <h2>Mes infos</h2>
+                    <ul><li>{user.age} ans</li></ul>
+                </div>
+
+                <div className="notes">
+                    <h2>Mes notes : </h2>              
+                    <ul> <li>{notes.map(note => (note.movie_title+ ":" + note.value +"/10"))} </li></ul>
+                </div>
+
+            </div>
         </div>
 
 

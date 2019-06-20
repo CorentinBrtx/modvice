@@ -34,13 +34,19 @@ function Movie ({match}) {
     console.log(mean)
     return ((movie && mean && ownNote) ?
         <div>
+            <div className="liens">
+                <Link to={ "/home/" + match.params.username }> Accueil</Link> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                 <Link to={ "/user/" + match.params.username }>Mon compte </Link>
+                
+            </div>
 
+            <div className="title">
+                <h1>{movie.title}</h1> 
+            </div>
+        <div className="column-layout">  
 
-            <Link to={"/home/"+match.params.username}>Accueil</Link>
-            <Link to={"/user/"+match.params.username}>Mon compte</Link>
-            <h1>{movie.title}</h1>
-
-            <div className="Infos">
+            
+            <div className="Infos1">
                 <h2>Informations sur le film</h2>
 
                 <ul>
@@ -50,7 +56,7 @@ function Movie ({match}) {
                     <li>Date de sortie : {movie.date}</li>
                 </ul>
             </div>
-
+            <div className = "2Notes">
             <div className="Notes">
                 <h2>Notes du film</h2>
 
@@ -61,9 +67,9 @@ function Movie ({match}) {
                 <h2>Votre note :</h2>
 
                 <p>{ownNote} / 10</p>
-
             </div>
-
+            </div>
+        </div>
         </div>
         : <div>Loading</div>
     )
