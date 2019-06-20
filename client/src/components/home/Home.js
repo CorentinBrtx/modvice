@@ -19,11 +19,11 @@ function Home ({match}) {
     }, []);
   console.log(movies)
  return(
-    <div className="home">
-
-        <Link to={"/user/"+match.params.username}>Mon compte</Link>
-
-        
+    <div>
+        <div className = "lien">
+            <Link to={"/user/"+match.params.username}>Mon compte</Link>
+        </div>
+        <div className="home">
         <div className="user1">   
                         <h1>Modvice</h1>
         </div>
@@ -73,7 +73,7 @@ function Home ({match}) {
                     </div>        
             </div>
         </div>
-    </div>
+    </div></div>
   )};
 
 const SelectContainer = ({ children, ...props }) => {

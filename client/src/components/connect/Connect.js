@@ -38,42 +38,50 @@ function Connect(props) {
     }
 
     return (
-        <div className="Connect">
-            <h1>Modvice</h1>
-
-            <div className="column-layout">
-
-                <div className="Connexion">
-                    <form onSubmit = {submitConnexion} >
-                        <label>Nom d'utilisateur : </label>
-                        <input type="text" name="username" id="username_co" required/>
-                        
-                        <label>Mot de passe : </label>
-                        <input type="password" name="password" id="password_co"/>
-
-                        <input type="submit" value="Se connecter" />
-                    </form>
-                </div>
     
-                <div className="Inscription">
-                    <form onSubmit = {submitInscription}>
-                        <label>Nom d'utilisateur : </label>
-                        <input type="text" name="username" id="username_ins" required/>
+        <div>
+
+            <div className="Couleur">
+                <h1>Modvice</h1>
+            </div>
+
+            <div className="Connect">
+
+        
+                <div className="column-layout">
+
+                    <div className="Connexion">
+                        <form onSubmit = {submitConnexion} >
+                            <label>Nom d'utilisateur : </label>
+                            <input type="text" name="username" id="username_co" required/>
                         
-                        <label>Age :</label>
-                        <input type="number" name="age" id="age" required/>
+                            <label>Mot de passe : </label>
+                            <input type="password" name="password" id="password_co"/>
 
-                        <label>Mot de passe : </label>
-                        <input type="password" name="password" id="password_ins" required/>
+                            <input type="submit" value="Se connecter" />
+                        </form>
+                    </div>
+    
+                    <div className="Inscription">
+                        <form onSubmit = {submitInscription}>
+                            <label>Nom d'utilisateur : </label>
+                            <input type="text" name="username" id="username_ins" required/>
+                        
+                            <label>Age :</label>
+                            <input type="number" name="age" id="age" required/>
 
-                        <label>Remettez votre mot de passe : </label>
-                        <input type="password" name="password_bis" id="password_bis"/>
+                            <label>Mot de passe : </label>
+                            <input type="password" name="password" id="password_ins" required/>
 
-                        <input type="submit" value="S'inscrire" />
-                    </form>
+                            <label>Remettez votre mot de passe : </label>
+                            <input type="password" name="password_bis" id="password_bis"/>
+
+                            <input type="submit" value="S'inscrire" />
+                        </form>
+                    </div>  
+
                 </div>  
-
-            </div>  
+            </div>
         </div>
     )
 }
