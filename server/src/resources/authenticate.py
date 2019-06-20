@@ -20,7 +20,7 @@ class AuthenticateResource(Resource):
         """ Identify a user """
         print(username)
         try:
-            user = UserRepository.get(user_name= username)
+            user = UserRepository.get(username= username)
             if user.password == password:
                 return "OK"
             else:

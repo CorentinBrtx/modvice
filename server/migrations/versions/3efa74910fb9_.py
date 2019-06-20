@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: e54a1ae82941
+Revision ID: 3efa74910fb9
 Revises: 4f2e2c180af
-Create Date: 2019-06-18 15:29:56.574418
+Create Date: 2019-06-20 15:08:28.549898
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'e54a1ae82941'
+revision = '3efa74910fb9'
 down_revision = '4f2e2c180af'
 
 from alembic import op
@@ -25,16 +25,17 @@ def upgrade():
     sa.PrimaryKeyConstraint('title')
     )
     op.create_table('user',
-    sa.Column('user_name', sa.String(length=300), nullable=False),
+    sa.Column('username', sa.String(length=300), nullable=False),
     sa.Column('age', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('user_name')
+    sa.Column('password', sa.String(length=300), nullable=True),
+    sa.PrimaryKeyConstraint('username')
     )
     op.create_table('notation',
     sa.Column('value', sa.Integer(), nullable=True),
     sa.Column('movie_title', sa.String(length=300), nullable=False),
     sa.Column('username', sa.String(length=300), nullable=False),
     sa.ForeignKeyConstraint(['movie_title'], ['movie.title'], ),
-    sa.ForeignKeyConstraint(['username'], ['user.user_name'], ),
+    sa.ForeignKeyConstraint(['username'], ['user.username'], ),
     sa.PrimaryKeyConstraint('movie_title', 'username')
     )
     # ### end Alembic commands ###

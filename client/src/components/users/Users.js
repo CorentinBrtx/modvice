@@ -5,9 +5,9 @@ import superagent from 'superagent';
 
 
 function Users ({match}) {
-    var notes = null;
 
     const [user, setUser] = React.useState(null);
+    const [notes, setNotes] = React.useState(null);
 
      
       React.useEffect(() => {
@@ -19,24 +19,20 @@ function Users ({match}) {
      React.useEffect(() => {
         superagent
         .get("http://localhost:5000/application/Notation/user/"+match.params.username)
-        .then(response => {notes = response.body.notations;
-                            notes = notes.map((note) => [{title: note.movie_title, note: note.value}] );});
+        .then(response => setNotes(response.body.notations))
         }, []);
 
 
         console.log(user)
 
- 
-
-    return((notes) ?
-
+    return((notes && user) ?
 
         <div> 
             <Link to={"/home/"+match.params.username}>Accueil</Link>
             <h1>Bonjour {user.username}</h1>
 
             <div className="Infos">
-                <ul><li>Age {user.age}</li></ul>
+                <ul><li>Age : {user.age}</li></ul>
             </div>
 
             <div>
@@ -44,7 +40,7 @@ function Users ({match}) {
             </div>
 
             <div>
-                <ul> {notes.map(note => ("<li>"+ note.title+ ":" + note.note +"/10"+ "</li>"))} </ul>
+                <ul> {notes.map(note => ("<li>"+ note.movie_title+ ":" + note.value +"/10"+ "</li>"))} </ul>
             </div>
 
 

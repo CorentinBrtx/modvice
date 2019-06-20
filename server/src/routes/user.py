@@ -8,7 +8,7 @@ from resources import UserResource, UsersResource
 
 USER_BLUEPRINT = Blueprint("user", __name__)
 Api(USER_BLUEPRINT).add_resource(
-    UserResource, "/user/<string:user_name>"
+    UserResource, "/user/<string:username>"
 )
 
 Api(USER_BLUEPRINT).add_resource(

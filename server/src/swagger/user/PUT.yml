@@ -3,7 +3,7 @@ Update a user based on the sent information
 tags:
   - user
 parameters:
-  - name: user_name
+  - name: username
     in: path
     type: string
     description: the name of the user
@@ -24,7 +24,7 @@ responses:
     schema:
       example:
         user:
-          user_name: John
+          username: John
           age: 30
           password: abc
 

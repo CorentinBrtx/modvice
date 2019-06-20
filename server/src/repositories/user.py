@@ -7,26 +7,26 @@ class UserRepository:
     """ The repository for the user model """
 
     @staticmethod
-    def get(user_name):
+    def get(username):
         """ Query a user by user name """
-        return User.query.filter_by(user_name= user_name).one()
+        return User.query.filter_by(username= username).one()
 
     @staticmethod
     def get_all():
         """ Query all the users """
         return User.query.all()
 
-    def update(self, user_name, age, password):
+    def update(self, username, age, password):
         """ Update a user's age """
-        user = self.get(user_name)
+        user = self.get(username)
         user.age = age
         user.password = password
 
         return user.save()
 
     @staticmethod
-    def create(user_name, age, password):
+    def create(username, age, password):
         """ Create a new user """
-        user = User(user_name= user_name, age=age, password=password)
+        user = User(username= username, age=age, password=password)
 
         return user.save()

@@ -16,10 +16,10 @@ class UserResource(Resource):
 
     @staticmethod
     @swag_from("../swagger/user/GET.yml")
-    def get(user_name):
+    def get(username):
         """ Return an user key information based on his name """
-        user = UserRepository.get(user_name= user_name)
-        return jsonify({"user": {"user_name": user.user_name, "age": user.age, "password": user.password}})
+        user = UserRepository.get(username= username)
+        return jsonify({"user": {"username": user.username, "age": user.age, "password": user.password}})
 
     @staticmethod
     @parse_params(
@@ -27,12 +27,12 @@ class UserResource(Resource):
         Argument("password", location="json", required=True, help="The password of the user.")
     )
     @swag_from("../swagger/user/POST.yml")
-    def post(user_name, age, password):
+    def post(username, age, password):
         """ Create an user based on the sent information """
         user = UserRepository.create(
-            user_name= user_name, age=age, password=password
+            username= username, age=age, password=password
         )
-        return jsonify({"user": {"user_name": user.user_name, "age": user.age, "password":user.password}})
+        return jsonify({"user": {"username": user.username, "age": user.age, "password":user.password}})
 
     @staticmethod
     @parse_params(
@@ -40,11 +40,11 @@ class UserResource(Resource):
         Argument("password", location="json", required=True, help="The password of the user.")
     )
     @swag_from("../swagger/user/PUT.yml")
-    def put(user_name, age, password):
+    def put(username, age, password):
         """ Update an user based on the sent information """
         repository = UserRepository()
-        user = repository.update(user_name= user_name, age=age, password=password)
-        return jsonify({"user": {"user_name": user.user_name, "age": user.age, "password":user.password}})
+        user = repository.update(username= username, age=age, password=password)
+        return jsonify({"user": {"username": user.username, "age": user.age, "password":user.password}})
 
 
 class UsersResource(Resource):
@@ -55,4 +55,4 @@ class UsersResource(Resource):
     def get():
         """ Return all the users """
         users = UserRepository.get_all()
-        return jsonify({"users": [{"user_name": user.user_name, "age": user.age, "password":user.password} for user in users]})
+        return jsonify({"users": [{"username": user.username, "age": user.age, "password":user.password} for user in users]})

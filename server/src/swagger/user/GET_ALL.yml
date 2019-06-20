@@ -8,6 +8,6 @@ responses:
     schema:
       example:
         user:
-          user_name: John
+          username: John
           age: 30
           password: abc

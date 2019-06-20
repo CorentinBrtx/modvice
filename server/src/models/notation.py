@@ -15,7 +15,7 @@ class Notation(db.Model, BaseModel, metaclass=MetaBaseModel):
     movie_title = db.Column(db.String(300), db.ForeignKey('movie.title'), primary_key=True)
     movie = db.relationship("Movie", back_populates="notation", foreign_keys=[movie_title])
 
-    username = db.Column(db.String(300), db.ForeignKey('user.user_name'), primary_key=True)
+    username = db.Column(db.String(300), db.ForeignKey('user.username'), primary_key=True)
     user = db.relationship("User", back_populates="notation", foreign_keys=[username])
     
 
