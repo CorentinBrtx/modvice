@@ -3,23 +3,6 @@ import './Connect.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import superagent from 'superagent';
 
-
-function submitInscription(e) {
-    console.log(e)
-    var username = e.username
-    var age = e.age
-    var password = e.password
-    var password_bis = e.password_bis
-    console.log(password)
-    console.log(password_bis)
-    if (password != password_bis) {
-        alert("Entrez deux fois le même mot de passe")
-    } else {
-        this.props.history.push("/home/"+username)
-    }
-}
-
-
 function Connect(props) {
 
     const submitConnexion = (event) => {
@@ -33,6 +16,25 @@ function Connect(props) {
         .then(response => props.history.push("/home/"+username))
         .catch(error => {alert("Nom d'utilisateur ou mot de passe incorrect");
                 props.history.push("/connect")})
+    }
+
+    const submitInscription = (event) => {
+        event.preventDefault()
+        var username = event.target[0].value
+        var age = event.target[1].value
+        var password = event.target[2].value
+        var password_bis = event.target[3].value
+
+        if (password != password_bis) {
+            alert("Entrez deux fois le même mot de passe")
+        } else {
+            superagent
+            .post("http://localhost:5000/application/user/"+username)
+            .send({age: age, password: password})
+            .then(response => props.history.push("/home/"+username))
+            .catch(error => {alert("Ce nom d'utilisateur est déjà utilisé");
+                    props.history.push("/connect")})
+        }
     }
 
     return (
@@ -54,7 +56,7 @@ function Connect(props) {
                 </div>
     
                 <div className="Inscription">
-                    <form onSubmit = {submitInscription.bind(this)}>
+                    <form onSubmit = {submitInscription}>
                         <label>Nom d'utilisateur : </label>
                         <input type="text" name="username" id="username_ins" required/>
                         

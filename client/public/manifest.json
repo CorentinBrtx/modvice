@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Modvice",
+  "name": "Find the best movies with Modvice",
   "icons": [
     {
       "src": "favicon.ico",
