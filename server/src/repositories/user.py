@@ -16,10 +16,11 @@ class UserRepository:
         """ Query all the users """
         return User.query.all()
 
-    def update(self, user_name, age):
+    def update(self, user_name, age, password):
         """ Update a user's age """
         user = self.get(user_name)
         user.age = age
+        user.password = password
 
         return user.save()
 

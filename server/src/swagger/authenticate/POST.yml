@@ -1,0 +1,23 @@
+Check auth
+---
+tags:
+  - auth
+parameters:
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username
+        password:
+          type: string
+          description: The password of the user
+responses:
+  200:
+    description: The user was successfully created
+    schema:
+      example:
+        "ok"
+

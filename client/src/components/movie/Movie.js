@@ -10,6 +10,7 @@ function Movie ({match}) {
     const [movie, setMovie] = React.useState(null);
     const [mean, setMean] = React.useState(null);
     const [ownNote, setOwnNote] = React.useState(null);
+    
     React.useEffect(() => {
         superagent
         .get("http://localhost:5000/application/movie/"+match.params.movie_title)
