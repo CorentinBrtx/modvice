@@ -35,7 +35,8 @@
   color: #FE0101;
 }
 .user5 {
-  text-align: center;
+  display: table;
+  margin:0 auto;
   
 }
 
@@ -53,7 +54,7 @@
 .lien {  background-color: #282c34;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: line;
   font-size: calc(5px + 2vmin);
   color: red
  }
@@ -61,9 +62,11 @@
 
 
 
-.Search {
-  text-align: center;
+.searchResult {
+  color: black;
+  text-decoration: none;
 }
+
 .Search-header {
   background-color: #282c34;
   min-height: 100vh;

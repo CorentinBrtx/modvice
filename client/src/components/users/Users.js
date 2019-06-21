@@ -29,7 +29,7 @@ function Users ({match}) {
 
         <div> 
             <div className="accueil">
-                <Link to={"/home/"+match.params.username}>Accueil</Link>
+                <Link to={"/home/"+match.params.username} className="linkLeft">Accueil</Link>
             </div>
 
 
@@ -43,12 +43,20 @@ function Users ({match}) {
 
                 <div className="Infos">
                     <h2>Mes infos</h2>
-                    <ul><li>{user.age} ans</li></ul>
+                    <ul>
+                        <li>Mon nom d'utilisateur : {user.username}</li>
+                        <br></br>
+                        <li>Mon age : {user.age} ans</li>
+                    </ul>
                 </div>
 
                 <div className="notes">
                     <h2>Mes notes : </h2>              
-                    <ul> <li>{notes.map(note => (note.movie_title+ ":" + note.value +"/10"))} </li></ul>
+                    <ul> 
+                        <div dangerouslySetInnerHTML={{ __html: notes.map(
+                            note => ("<li>"+note.movie_title+" : "+note.value+"/10 </li>")
+                            ).join("<br>")} } />
+                    </ul>
                 </div>
 
             </div>

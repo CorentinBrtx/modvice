@@ -1,6 +1,6 @@
 """ Defines the Movie repository """
 
-from models import Movie
+from models import Movie, Notation
 
 
 class MovieRepository:
@@ -15,6 +15,19 @@ class MovieRepository:
     def get_all():
         """ Query all the movies """
         return Movie.query.all()
+
+    @staticmethod
+    def get_mean(title):
+        """ Get the mean notation of a movie """
+        notations = Notation.query.filter_by(movie_title=title).all()
+        if len(notations) == 0:
+            return 0
+        else:
+            somme = 0
+            for note in notations:
+                somme += note.value
+            return (somme/len(notations))
+
 
     def update(self, title, producer, date, actor1, actor2):
         """ Update a movie's age """

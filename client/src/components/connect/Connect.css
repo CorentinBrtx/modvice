@@ -35,7 +35,7 @@ h1 {
     box-sizing: border-box;
   }
   
-form {
+.connectForm {
     padding: 1em;
     background: #f9f9f9;
     border: 1px solid #c1c1c1;
@@ -46,23 +46,24 @@ form {
     padding: 1em;
 }
 
-form input {
+.connectInput {
     margin-bottom: 1rem;
     background: #fff;
     border: 1px solid #9c9c9c;
 }
 
-form button {
+.connectSubmit {
     background: lightgrey;
     padding: 0.7em;
     border: 0;
 }
 
-form button:hover {
+.connectSubmit:hover {
     background: gold;
+    cursor: pointer;
 }
   
-label {
+.connectLabel {
     text-align: right;
     display: block;
     padding: 0.5em 1.5em 0.5em 0;
@@ -75,7 +76,7 @@ input {
     margin-bottom: 0.5rem;
 }
 
-input:focus {
+.connectInput:focus {
     outline: 3px solid gold;
 }
   

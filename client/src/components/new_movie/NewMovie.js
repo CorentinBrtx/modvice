@@ -23,28 +23,30 @@ function NewMovie (props, {match}) {
     return(
         <div className="NewMovie">
 
-            <Link to={"/home/"+props.match.params.username}>Accueil</Link>
-            <Link to={"/user/"+props.match.params.username}>Mon compte</Link>
+            <Link to={"/home/"+props.match.params.username} className="linkLeft">Accueil</Link>
+            <Link to={"/user/"+props.match.params.username} className="linkRight">Mon compte</Link>
 
-            <h1> Ajout d'un nouveau film </h1>
+            <div className="title">  
+                <h1> Ajout d'un nouveau film </h1>
+            </div>
 
-            <form onSubmit = {submitNewMovie}>
-                <label>Nom du film : </label>
-                <input type="text" name="title" required />
+            <form onSubmit = {submitNewMovie} className="connectForm">
+                <label className="connectLabel">Nom du film : </label>
+                <input type="text" name="title" required className="connectInput"/>
 
-                <label>Date de sortie : </label>
-                <input type="year" name="date" required />
+                <label className="connectLabel">Date de sortie : </label>
+                <input type="year" name="date" required className="connectInput"/>
 
-                <label>Producteur : </label>
-                <input type="text" name="producer" />
+                <label className="connectLabel">Producteur : </label>
+                <input type="text" name="producer" className="connectInput"/>
 
-                <label>Acteur principal : </label>
-                <input type="text" name="actor1" />
+                <label className="connectLabel">Acteur principal : </label>
+                <input type="text" name="actor1" className="connectInput"/>
 
-                <label>Acteur secondaire : </label>
-                <input type="text" name="actor2" />
+                <label className="connectLabel">Acteur secondaire : </label>
+                <input type="text" name="actor2" className="connectInput"/>
 
-                <input type="submit" value="Enregistrer le film"/>
+                <input type="submit" value="Enregistrer le film" className="connectSubmit"/>
             </form>
 
         </div>

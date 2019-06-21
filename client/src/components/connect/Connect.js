@@ -49,32 +49,32 @@ function Connect(props) {
                 <div className="column-layout">
 
                     <div className="Connexion">
-                        <form onSubmit = {submitConnexion} >
-                            <label>Nom d'utilisateur : </label>
-                            <input type="text" name="username" id="username_co" required/>
+                        <form onSubmit = {submitConnexion} className="connectForm">
+                            <label className="connectLabel">Nom d'utilisateur : </label>
+                            <input type="text" name="username" id="username_co" required className="connectInput"/>
                         
-                            <label>Mot de passe : </label>
-                            <input type="password" name="password" id="password_co"/>
+                            <label className="connectLabel">Mot de passe : </label>
+                            <input type="password" name="password" id="password_co" className="connectInput"/>
 
-                            <input type="submit" value="Se connecter" />
+                            <input type="submit" value="Se connecter" className="connectSubmit"/>
                         </form>
                     </div>
     
                     <div className="Inscription">
-                        <form onSubmit = {submitInscription}>
-                            <label>Nom d'utilisateur : </label>
-                            <input type="text" name="username" id="username_ins" required/>
+                        <form onSubmit = {submitInscription} className="connectForm">
+                            <label className="connectLabel">Nom d'utilisateur : </label>
+                            <input type="text" name="username" id="username_ins" required className="connectInput"/>
                         
-                            <label>Age :</label>
-                            <input type="number" name="age" id="age" required/>
+                            <label className="connectLabel">Age :</label>
+                            <input type="number" name="age" id="age" required className="connectInput"/>
 
-                            <label>Mot de passe : </label>
-                            <input type="password" name="password" id="password_ins" required/>
+                            <label className="connectLabel">Mot de passe : </label>
+                            <input type="password" name="password" id="password_ins" required className="connectInput"/>
 
-                            <label>Remettez votre mot de passe : </label>
-                            <input type="password" name="password_bis" id="password_bis"/>
+                            <label className="connectLabel">Remettez votre mot de passe : </label>
+                            <input type="password" name="password_bis" id="password_bis" className="connectInput"/>
 
-                            <input type="submit" value="S'inscrire" />
+                            <input type="submit" value="S'inscrire" className="connectSubmit"/>
                         </form>
                     </div>  
 

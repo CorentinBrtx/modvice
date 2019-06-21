@@ -10,74 +10,96 @@ const CustomOption = ({innerRef, innerProps}) =>
 
 
 function Home ({match}) {
-    const formatOptionLabel = (...props) => (console.log('props', props), <Link to={'/movie/'+ match.params.username + "/"+ props[0].movie.title} >{props[0].movie.title}</Link>)
+
+    const formatOptionLabel = (...props) => (console.log('props', props), <Link to={'/movie/'+ match.params.username + "/"+ props[0].movie.title} className="searchResult">{props[0].movie.title}</Link>)
+
     const [movies, setMovies] = React.useState(null);
+    const [bestMovies, setBestMovies] = React.useState(null);
+    const [forMe, setForMe] = React.useState([]);
+
     React.useEffect(() => {
       superagent
         .get("http://localhost:5000/application/movies")
         .then(response => setMovies(response.body.movies));
     }, []);
-  console.log(movies)
- return(
-    <div>
-        <div className = "lien">
-            <Link to={"/user/"+match.params.username}>Mon compte</Link>
-        </div>
-        <div className="home">
-        <div className="user1">   
-                        <h1>Modvice</h1>
-        </div>
 
-        <div className="Search">
-            <Select
-            components={{ SelectContainer }}
-            styles={{
-                container: base => ({
-                ...base,
-                padding: 5,
-                }),
-            }}
-            options={movies}
-            getOptionLabel={option =>
-                `${option.movie.title}`
-              }
-            getOptionValue={option => `${option}`}
-            formatOptionLabel={formatOptionLabel}
-            />
-      </div>
+    React.useEffect(() => {
+        superagent
+          .get("http://localhost:5000/application/moviesbest")
+          .then(response => setBestMovies(response.body.movies))
+          .catch(error => setBestMovies("Pas de film"));
+      }, []);
 
+    React.useEffect(() => {
+        superagent
+            .get("http://localhost:5000/application/moviesbestuser/"+match.params.username)
+            .then(response => setForMe(response.body.movies))
+            .catch(error => setForMe("Pas de film"));
+    }, []);
 
+    return((bestMovies && forMe) ?
+        <div>
+            <div className = "lien">
+                <Link to={"/newmovie/"+match.params.username} className="linkCenter">Ajouter un nouveau film</Link>
+                <Link to={"/user/"+match.params.username} className="linkRight">Mon compte</Link>
+            </div>
 
-        <div className="column-layout">
+            <div className="home">
+                <div className="user1">   
+                    <h1>Modvice</h1>
+                </div>
+
+                <div className="Search">
+                    <Select
+                    components={{ SelectContainer }}
+                    styles={{
+                        container: base => ({
+                        ...base,
+                        padding: 5,
+                        marginLeft: "15rem",
+                        marginRight: "15rem"
+                        }),
+                    }}
+                    options={movies}
+                    getOptionLabel={option =>
+                        `${option.movie.title}`
+                    }
+                    getOptionValue={option => `${option}`}
+                    formatOptionLabel={formatOptionLabel}
+                    />
+                </div>
+
+                <br></br>
+
+                <div className="column-layout">
+                        
+                    <div>
+                        <h2 className="user2">
+                            Pour vous : 
+                        </h2>
+
+                        <ol className="user5">
+                            <div dangerouslySetInnerHTML={{ __html: forMe.slice(0,10).map(
+                            best => ("<li>"+best.movie.title+" : "+best.movie.mean+"/10 </li>")
+                            ).join("<br>")} } />
+                        </ol>  
+
+                    </div> 
+                    <div>
+                        <h2 className="user4">Populaires</h2>   
+                        
+                        <ol className="user5">
+                            <div dangerouslySetInnerHTML={{ __html: bestMovies.slice(0,10).map(
+                            best => ("<li>"+best.movie.title+" : "+best.movie.mean+"/10 </li>")
+                            ).join("<br>")} } />
+                        </ol>      
+                    </div>
+                </div>
                 
-
-            <div>     
-                    <div className="user2">
-                        <h2>Pour vous : </h2>
-                    </div>
-
-
-                    <div className="user3">
-                        <h4>hihi</h4>
-                        <h4>star wars</h4>
-                    </div>
-            </div> 
-            <div>
-                    <div className="user4">
-                        <h2>Populaires</h2>
-                    </div>    
-
-                    <div className="user5">
-                        <h4>coucou</h4>                                 
-                        <h4>corentin is big </h4>
-                    </div>        
             </div>
         </div>
-
-        <Link to={"/newmovie/"+match.params.username}>Ajouter un nouveau film</Link>
-        
-    </div></div>
-  )};
+        : <div>Loading</div>
+    )};
 
 const SelectContainer = ({ children, ...props }) => {
     return (

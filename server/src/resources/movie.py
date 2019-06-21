@@ -7,7 +7,7 @@ from flask.json import jsonify
 from flask_restful import Resource
 from flask_restful.reqparse import Argument
 
-from repositories import MovieRepository
+from repositories import MovieRepository, NotationRepository
 from util import parse_params
 
 
@@ -91,3 +91,40 @@ class MoviesResource(Resource):
                                         "title": movie.title
                                     }} 
                                     for movie in movies]})
+
+class MoviesBestResource (Resource):
+
+    @staticmethod
+    @swag_from("../swagger/movie/GET_BEST.yml")
+    def get():
+        """ Return the 10 best movies """
+        movies = MovieRepository.get_all()
+        means = {}
+        for movie in movies:
+            means[movie.title] = MovieRepository.get_mean(movie.title)
+        list_bests = sorted(means.items(), key=lambda t: t[1], reverse=True)
+        return jsonify({"movies": [{"movie": {
+                                        "title": best[0],
+                                        "mean": best[1]
+                                    }} 
+                                    for best in list_bests]})
+
+class MoviesBestUserResource (Resource):
+
+    @staticmethod
+    @swag_from("../swagger/movie/GET_BEST_USER.yml")
+    def get(username):
+        """ Return the 10 best movies for a user """
+        movies = MovieRepository.get_all()
+        notations = NotationRepository.get_all_user(username=username)
+        seens = [notation.movie_title for notation in notations]
+        means = {}
+        for movie in movies:
+            means[movie.title] = MovieRepository.get_mean(movie.title)
+        list_bests = sorted(means.items(), key=lambda t: t[1], reverse=True)
+        list_bests_not_seen = [best for best in list_bests if best[0] not in seens]
+        return jsonify({"movies": [{"movie": {
+                                        "title": best[0],
+                                        "mean": best[1]
+                                    }} 
+                                    for best in list_bests_not_seen]})
